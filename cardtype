@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+
+int main()
+{
+    long long card;
+    printf("Number:\n");
+    scanf("%lld",&card);
+    printf("%ld\n",digits(card));
+
+
+    if (digits(card)==16|digits(card)==13|digits(card)==15){
+            printf("%s",typecheck(card));
+            }
+
+}
+
+int digits(long long n)
+{
+    int count = 1;
+    long long i;
+    for (i=n;i>10;i/=10)
+    {
+        count++;
+    }
+    return count;
+}
+
+typecheck(long long n)
+{
+    long long i,j;
+    i = n;
+    j=n;
+    while (i>9)
+    {
+        i/=10;
+    }
+    while (j>99)
+    {
+        j/=10;
+    }
+
+
+
+    if (i==4&&digits(n)==16)
+    {
+        return "VISA";
+    }
+    else if (i==4&&digits(n)==13)
+    {
+        return "VISA";
+    }
+    else if ((j==34&&digits(n)==15)|(j==37&&digits(n)==15))
+    {
+        return "AMEX";
+    }
+    else if (j>50&&digits(n)==16&&j<56)
+    {
+        return "MASTER";
+    }
+    else
+    {
+        return "INVALID";
+    }
+
+
+}
+
+
